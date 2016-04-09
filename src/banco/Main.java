@@ -7,6 +7,7 @@ package banco;
 
 import exception.SaldoInsuficiente;
 import exception.SaldoNegativoException;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Main {
     
     public static void main(String[] args) throws SaldoNegativoException, SaldoInsuficiente {
     java.util.Scanner lectura= new java.util.Scanner (System.in);
+    boolean error=false; 
     Banco banco= new Banco();  
     Fecha fechaHoy= new Fecha(9, 4, 2016);
     int eleccion=1; 
@@ -30,12 +32,16 @@ public class Main {
                             +"\n6. Dia siguiente"
                             +"\n0. Para finalizar el programa"
                                 );
-    eleccion= lectura.nextInt();
+   
     
+       
+    eleccion= lectura.nextInt(); 
+    
+   
         switch (eleccion){
             case 1:{
                 try{
-            banco.anadirCuentaAhorros(5, fechaHoy.getDia(), fechaHoy.getMes(), fechaHoy.getAnio());
+            banco.anadirCuentaAhorros(5, fechaHoy.getDia(), fechaHoy.getMes(), fechaHoy.getAnio()+1);
                 }catch(SaldoNegativoException ex){
                     System.out.println("El saldo no puede ser negativo");
                     }
@@ -96,14 +102,6 @@ public class Main {
                  }
                 System.out.println("Ingrese cantidad que desea retirar");
                 double cantidad=lectura.nextDouble();
-                
-                if(c1.getTipo().equals("Ahorros")&&c1.getFechaVencimiento()==fechaHoy){
-                    c1.retirar(cantidad);
-                }else{
-                    System.out.println("No se puede retirar en una fecha distinta a la fecha de vencimiento");      
-                    break;
-                            }
-                
                 try{
                 c1.retirar(cantidad);
                 }catch(SaldoInsuficiente ex){
@@ -112,7 +110,7 @@ public class Main {
                  }
                 
            }
-        
+            
         }   
         } while(eleccion!=0);
     
