@@ -67,7 +67,7 @@ public class CuentaAhorros extends Cuenta {
     }
     @Override
     public Fecha getFechaVencimiento() {
-        return fechaVencimiento;
+        return this.fechaVencimiento;
     }
     
     

@@ -96,8 +96,20 @@ public class Main {
                  }
                 System.out.println("Ingrese cantidad que desea retirar");
                 double cantidad=lectura.nextDouble();
-                
-                
+                if (c1.getTipo().equals("Ahorros")){
+                    if(c1.getFechaVencimiento().getDia()!=fechaHoy.getDia()){
+                    System.out.println("Solo puede retirar el dia de vencimiento de la cuenta");
+                    break; 
+                     }else{
+                        try{
+                c1.retirar(cantidad);
+                }catch(SaldoInsuficiente ex){
+                    System.out.println("Saldo Insuficiente");
+                break;
+                 }
+                    }
+                }
+                if(c1.getTipo().equals("Cheques")){
                 
                 try{
                 c1.retirar(cantidad);
@@ -105,16 +117,10 @@ public class Main {
                     System.out.println("Saldo Insuficiente");
                 break;
                  }
-                if(c1.getTipo().equals("Ahorros")&&c1.getFechaVencimiento()==fechaHoy){
-                    c1.retirar(cantidad);
-                }else{
-                    System.out.println("No se puede retirar en una fecha distinta a la fecha de vencimiento");      
-                    break;
-                            }
                 
            }
         
-        }   
+        }}   
         } while(eleccion!=0);
     
 }}
