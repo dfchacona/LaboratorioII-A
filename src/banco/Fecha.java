@@ -43,5 +43,37 @@ public class Fecha {
         return this.anio;
     }
     
+    public void diaSiguiente(){
+        if (mes==1||mes==3||mes==5||mes==6||mes==8||mes==10||mes==12){
+          if(dia<31){
+              this.dia++;
+          }else if (mes<12){
+              
+              this.dia=1;
+              this.mes++;
+          }else{
+              this.dia=1; 
+              this.mes=1; 
+              this.anio++;
+          }
+        }else{
+           if(dia<30){
+              this.dia++;
+          }else if (mes<12){
+              
+              this.dia=1;
+              this.mes++;
+          }else{
+              this.dia=1; 
+              this.mes=1; 
+              this.anio++;
+          }  
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Fecha de Vencimiento{" + "dia=" + dia + ", mes=" + mes + ", año=" + anio + '}';
+    }
     
 }

@@ -1,6 +1,6 @@
 
 package banco;
-
+import exception.*;
 /**
  *
  * @author Diego Chacon 
@@ -21,7 +21,7 @@ public class CuentaAhorros extends Cuenta {
     * @param mesVencimiento mes de vencimiento de la cuenta
     * @param anioVencimiento anio de vencimiento de la cuenta
     */ 
-    public CuentaAhorros(double porcentajeIntMensual, int numeroCuenta, String nombreCliente, double saldo, int diaVencimiento, int mesVencimiento, int anioVencimiento) {
+    public CuentaAhorros(double porcentajeIntMensual, int numeroCuenta, String nombreCliente, double saldo, int diaVencimiento, int mesVencimiento, int anioVencimiento) throws SaldoNegativoException {
         super(numeroCuenta, nombreCliente, saldo);
         this.porcentajeIntMensual = porcentajeIntMensual;
         Fecha f1= new Fecha(diaVencimiento,mesVencimiento,anioVencimiento);
@@ -45,18 +45,30 @@ public class CuentaAhorros extends Cuenta {
     /**
     * Funcion que permite retirar dinero de la cuenta
     * @param cantidad cantidad de dinero que se va a retirar
-    * @param fechaHoy fecha de hoy
     */ 
-    public void retirar(double cantidad, Fecha fechaHoy) {
-    if(cantidad<=this.saldo){
-        if(fechaHoy==fechaVencimiento){
-            this.saldo=this.saldo-cantidad;
-        }else{
-            System.out.println("Solo puede retirar saldo en la fecha de vencimiento");
-        }
+    public void retirar(double cantidad) throws SaldoInsuficiente{
+    if(cantidad>=this.saldo){
+        throw new SaldoInsuficiente ("Saldo Insuficiente");
     }else{
-        System.out.println("Saldo insuficiente");
-    }    
+        this.saldo=this.saldo-cantidad; 
     }
+    }
+    @Override
+    public void setTipo(){
+        this.tipo="Ahorros";
+    }
+    public String getTipo() {
+        return tipo;
+    }
+    
+    @Override
+    public String toString() {
+        return "CuentaAhorros{"+ super.toString() + "porcentaje de interes mensual=" + porcentajeIntMensual + "," + fechaVencimiento.toString() + '}';
+    }
+    @Override
+    public Fecha getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+    
     
 }

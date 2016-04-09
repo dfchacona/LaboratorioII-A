@@ -1,6 +1,8 @@
 
 package banco;
 
+import exception.SaldoNegativoException;
+
 /**
  *
  * @author Diego Chacon 
@@ -18,7 +20,7 @@ public class CuentaCheques extends Cuenta{
     * @param comisionUso comision de uso de la cuenta
     * @param comisionSaldoInsuficiente comision por saldo insuficiente de la cuenta
     */ 
-    public CuentaCheques(double comisionUso, double comisionSaldoInsuficiente, int numeroCuenta, String nombreCliente, double saldo) {
+    public CuentaCheques(double comisionUso, double comisionSaldoInsuficiente, int numeroCuenta, String nombreCliente, double saldo) throws SaldoNegativoException {
         super(numeroCuenta, nombreCliente, saldo);
         this.comisionUso = comisionUso;
         this.comisionSaldoInsuficiente = comisionSaldoInsuficiente;
@@ -38,6 +40,7 @@ public class CuentaCheques extends Cuenta{
     * Funcion que permite retirar dinero de la cuenta
     * @param cantidad cantidad de dinero que se va a retirar
     */ 
+    @Override
     public void retirar(double cantidad){
         if(cantidad<=this.saldo){
         
@@ -47,6 +50,19 @@ public class CuentaCheques extends Cuenta{
         System.out.println("Saldo insuficiente, se retirara la comision por saldo insuficiente");
         this.saldo=this.saldo-this.comisionSaldoInsuficiente;
     }    
+    }
+    @Override
+    public void setTipo(){
+        this.tipo="Cheques";
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+    
+    @Override
+    public String toString() {
+        return "Cuenta de Cheques{" + super.toString()+ ", Comision por uso=" + comisionUso + ", Comision por uso con saldo insuficiente=" + comisionSaldoInsuficiente + '}';
     }
     
 }
