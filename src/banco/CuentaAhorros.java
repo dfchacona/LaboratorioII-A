@@ -63,7 +63,7 @@ public class CuentaAhorros extends Cuenta {
     
     @Override
     public String toString() {
-        return "CuentaAhorros{"+ super.toString() + "porcentaje de interes mensual=" + porcentajeIntMensual + "," + fechaVencimiento.toString() + '}';
+        return "Cuenta de Ahorros{"+ super.toString() + " Porcentaje de interes mensual:" + porcentajeIntMensual + "% , " + fechaVencimiento.toString() + '}';
     }
     @Override
     public Fecha getFechaVencimiento() {

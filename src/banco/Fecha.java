@@ -73,7 +73,7 @@ public class Fecha {
 
     @Override
     public String toString() {
-        return "Fecha de Vencimiento{" + "dia=" + dia + ", mes=" + mes + ", año=" + anio + '}';
+        return "Fecha de Vencimiento{" + "Día: " + dia + ", Mes: " + mes + ", Año:" + anio + '}';
     }
     
 }

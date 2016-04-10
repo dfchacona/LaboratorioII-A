@@ -55,7 +55,7 @@ public abstract class Cuenta {
     }
     @Override
     public String toString() {
-        return ("numero de cuenta=" + numeroCuenta + ", nombre del cliente=" + nombreCliente + ", saldo=" + saldo );
+        return ("Numero de cuenta: " + numeroCuenta + ", Nombre del cliente: " + nombreCliente + ", Saldo: $" + saldo );
     }
     public Fecha getFechaVencimiento(){
         return null; 

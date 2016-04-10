@@ -19,7 +19,10 @@ public class Main {
     Banco banco= new Banco();  
     Fecha fechaHoy= new Fecha(9, 4, 2016);
     int eleccion=1; 
+    int bandera=1; 
      do{  
+    do{     
+    try{    
     System.out.println("Fecha de hoy: "+fechaHoy.getDia()+"/"+fechaHoy.getMes()+"/"+fechaHoy.getAnio()
                             + "\nSeleccione"
                             +"\n1. Para registrar una cuenta de ahorros"
@@ -30,13 +33,18 @@ public class Main {
                             +"\n6. Dia siguiente"
                             +"\n0. Para finalizar el programa"
                                 );
-    eleccion= lectura.nextInt();
-    
+    eleccion= Integer.parseInt(lectura.next());
+    bandera=1; 
+    }catch(Exception ex){
+        System.out.println("Ingrese una opcion valida");
+        bandera=0; 
+    }
+    }while(bandera==0);
         switch (eleccion){
             case 1:{
-                try{
+            try{
             banco.anadirCuentaAhorros(5, fechaHoy.getDia(), fechaHoy.getMes(), fechaHoy.getAnio());
-                }catch(SaldoNegativoException ex){
+            }catch(SaldoNegativoException ex){
                     System.out.println("El saldo no puede ser negativo");
                     }
             break;

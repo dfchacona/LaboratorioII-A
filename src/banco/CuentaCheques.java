@@ -62,7 +62,7 @@ public class CuentaCheques extends Cuenta{
     
     @Override
     public String toString() {
-        return "Cuenta de Cheques{" + super.toString()+ ", Comision por uso=" + comisionUso + ", Comision por uso con saldo insuficiente=" + comisionSaldoInsuficiente + '}';
+        return "Cuenta de Cheques{ " + super.toString()+ ", Comision por uso: $" + comisionUso + ", Comision por uso con saldo insuficiente: $" + comisionSaldoInsuficiente + '}';
     }
     
 }
