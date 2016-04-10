@@ -44,6 +44,10 @@ public abstract class Cuenta {
         this.saldo=saldo+cantidad; 
     }
     
+    public void depositarInteres(){
+        
+    }
+    
     public void setTipo(){
          
     }

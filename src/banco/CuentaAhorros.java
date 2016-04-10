@@ -38,6 +38,7 @@ public class CuentaAhorros extends Cuenta {
         System.out.println("Porcentaje interes mensual: "+this.porcentajeIntMensual);
         System.out.println("Fecha de Vencimiento: "+this.fechaVencimiento.getDia()+"/"+this.fechaVencimiento.getMes()+"/"+this.fechaVencimiento.getAnio());
      }
+     @Override
     public void depositarInteres(){
        this.saldo=this.saldo+this.porcentajeIntMensual*this.saldo/100;
     }

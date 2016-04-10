@@ -58,7 +58,13 @@ public class Main {
             break;
             }
             case 6:{
-            fechaHoy.diaSiguiente();   
+            fechaHoy.diaSiguiente();
+                for (Cuenta c1 : banco.cuentas.values()) {
+                    if(c1.getTipo().equals("Ahorros")){
+                        if(c1.getFechaVencimiento().getDia()==fechaHoy.getDia())
+                        c1.depositarInteres();
+                    }
+                }
             break;
             }
             case 4:{
