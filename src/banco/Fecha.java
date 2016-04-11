@@ -56,8 +56,20 @@ public class Fecha {
               this.mes=1; 
               this.anio++;
           }
-        }else{
-           if(dia<30){
+        }else if (mes==2){
+           
+           if(dia<28){
+              this.dia++;
+          }else if (mes<12){
+              
+              this.dia=1;
+              this.mes++;
+          }else{
+              this.dia=1; 
+              this.mes=1; 
+              this.anio++;
+          } 
+        }else if(dia<30){
               this.dia++;
           }else if (mes<12){
               
@@ -69,11 +81,12 @@ public class Fecha {
               this.anio++;
           }  
         }
-    }
-
     @Override
     public String toString() {
         return "Fecha de Vencimiento{" + "Día: " + dia + ", Mes: " + mes + ", Año:" + anio + '}';
     }
+        
+    }
+
     
-}
+
